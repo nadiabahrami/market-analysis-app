@@ -1,2 +1,12 @@
 @import url("normalize.css");
 @import url("skeleton.css");
+
+img {
+  width: 20em;
+  height:20em;
+}
+
+button{
+  margin-bottom: 300px;
+
+}
