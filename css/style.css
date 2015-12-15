@@ -1,11 +1,16 @@
 @import url("normalize.css");
 @import url("skeleton.css");
+@import url(https://fonts.googleapis.com/css?family=Oswald);
 
 img {
   width: 20em;
   height:20em;
+  boder-color:black;
+  border-width:1px;
 }
-
+h1 {
+  font-family: 'Oswald', sans-serif;
+}
 button{
   margin-bottom: 1em;
 
