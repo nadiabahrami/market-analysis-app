@@ -1,6 +1,6 @@
 // var images = ["bag.jpg", "banana.jpg","boots.jpg","chair.jpg","cthulhu.jpg","dragon.jpg","pen.jpg", "scissors.jpg", "shark.jpg", "sweep.jpg", "unicorn.jpg", "usb.jpg", "water_can.jpg","wine_glass.jpg"];
 var things =[];
-
+var produce = document.getElementById("resultTable");
 var products = ["bag", "banana", "boots","chair", "cthulhu", "dragon", "pen","scissors", "shark", "sweep", "unicorn", "usb", "water_can", "wine_glass"];
 
 function pic (spot){
@@ -83,6 +83,8 @@ showResults: function(){
     productRank.results.hidden = false;
   }else{
     productRank.results.hidden = true;
+    produce.hidden = true;
+
 
   }
 
@@ -125,9 +127,8 @@ productRank.picC.addEventListener('click', function(){
 
 
 function table(){
-  produce = document.getElementById("press");
+  produce.hidden = false;
   produce.innerHTML = "";
-  var makeTb = document.createElement("table");
   var makeTr = document.createElement("tr");
   var makeTh = document.createElement("th");
   makeTh.textContent= "Item";
@@ -135,7 +136,7 @@ function table(){
   var makeTh = document.createElement("th");
   makeTh.textContent= "Votes";
   makeTr.appendChild(makeTh);
-  makeTb.appendChild(makeTr);
+  produce.appendChild(makeTr);
 
   for(var i=0; i<things.length; i++){
       var makeTr = document.createElement("tr");
@@ -145,9 +146,8 @@ function table(){
       var makeTd = document.createElement("td");
       makeTd.textContent = things[i].tally;
       makeTr.appendChild(makeTd)
-      makeTb.appendChild(makeTr);
+      produce.appendChild(makeTr);
   };
-  produce.appendChild(makeTb);
 }
 
 productRank.results.addEventListener('click', function(event){
