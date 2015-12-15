@@ -21,110 +21,82 @@ create();
 console.log(things)
 
 var productRank = {
+  totalClicks: 0,
+  pic1: null,
+  pic2: null,
+  pic3: null,
 
-totalClicks: 0,
-pic1: null,
-pic2: null,
-pic3: null,
+  results: document.getElementById("press"),
+  picA: document.getElementById("picA"),
+  picB: document.getElementById("picB"),
+  picC: document.getElementById("picC"),
 
-results: document.getElementById("press"),
-picA: document.getElementById("picA"),
-picB: document.getElementById("picB"),
-picC: document.getElementById("picC"),
+  getRandomIndex: function() {
+    return Math.floor(Math.random() * products.length);
+  },
 
-//theThree: [],
-getRandomIndex: function() {
-  return Math.floor(Math.random() * products.length);
-},
+  selection: function () {
+    productRank.pic1 = things[productRank.getRandomIndex()];
+    productRank.pic2 = things[productRank.getRandomIndex()];
+    productRank.pic3 = things[productRank.getRandomIndex()];
 
-selection: function () {
-  productRank.pic1 = things[productRank.getRandomIndex()];//we need to get objects from all products, get randomIndex choses a random number, returns an object and assigns it to left obj
-  productRank.pic2 = things[productRank.getRandomIndex()];
-  productRank.pic3 = things[productRank.getRandomIndex()];
+    if(productRank.pic1 === productRank.pic2 || productRank.pic1 === productRank.pic3 || productRank.pic2 === productRank.pic3)
+    {
+    productRank.selection();
+    console.log("redo");
+     things[pic3].views+= 1;
+    }else{
+      productRank.pic1.views += 1
+      productRank.pic2.views += 1
+      productRank.pic3.views += 1
+    }
+     productRank.picA.src = productRank.pic1.path;
+     productRank.picA.id = productRank.pic1.item;
+     productRank.picB.src = productRank.pic2.path;
+     productRank.picB.id = productRank.pic2.item;
+     productRank.picC.src = productRank.pic3.path;
+     productRank.picC.id = productRank.pic3.item;
+  },
 
-  if(productRank.pic1 === productRank.pic2 || productRank.pic1 === productRank.pic3 || productRank.pic2 === productRank.pic3)
-  {
-  productRank.selection();
-  console.log("redo");
-  // }else{
-  //      things[pic1].views+= 1;
-  //      things[pic2].views+= 1;
-  //      things[pic3].views+= 1;
-  }
-// selection: function(){
-//   var one = Math.floor(Math.random()*products.length);
-//   console.log(one);
-//   //theThree.push(one);
-//   var two = Math.floor(Math.random()*products.length);
-//   console.log(two);
-//   //theThree.push(two);
-//   var three = Math.floor(Math.random()*products.length);
-//   console.log(three);
-//   //theThree.push(three);
-//   if(one===two ||two===three||one===three){
-//     console.log("reroll");
-//     productRank.selection();
-//   }else{
-//     things[one].views+= 1;
-//     things[two].views+= 1;
-//     things[three].views+= 1;
-//   };
-//
-   productRank.picA.src = productRank.pic1.path;
-   productRank.picA.id = productRank.pic1.item;
-   productRank.picB.src = productRank.pic2.path;
-   productRank.picB.id = productRank.pic2.item;
-   productRank.picC.src = productRank.pic3.path;
-   productRank.picC.id = productRank.pic3.item;
-},
+  showResults: function(){
+    if (productRank.totalClicks % 15 === 0){
+      productRank.results.hidden = false;
+    }else{
+      productRank.results.hidden = true;
+      produce.hidden = true;
 
-showResults: function(){
-  if (productRank.totalClicks % 15 === 0){//total clicks mod 15.. mod does division and gived remainder
-    productRank.results.hidden = false;
-  }else{
-    productRank.results.hidden = true;
-    produce.hidden = true;
 
+    }
 
   }
-
-}
-
 };
 productRank.selection();
 console.log(productRank.pic1);
 
 productRank.picA.addEventListener('click', function(){
-  // productRank.tallyVotes();
   productRank.pic1.tally += 1;
   productRank.totalClicks += 1;
-  console.log(productRank.pic1.item + ' has ' + productRank.pic1.tally); //leftObj refers to object in our tally array
-  productRank.showResults();//calling function above
+  console.log(productRank.pic1.item + ' has ' + productRank.pic1.tally);
+  productRank.showResults();
   productRank.selection();
-
-}); //leftEl is property that holds value
+});
 
 productRank.picB.addEventListener('click', function(){
-  // productRank.tallyVotes();
   productRank.pic2.tally += 1;
   productRank.totalClicks += 1;
-  console.log(productRank.pic2.item + ' has ' + productRank.pic2.tally); //leftObj refers to object in our tally array
-  productRank.showResults();//calling function above
+  console.log(productRank.pic2.item + ' has ' + productRank.pic2.tally);
+  productRank.showResults();
   productRank.selection();
-
-
-}); //leftEl is property that holds value
+});
 
 productRank.picC.addEventListener('click', function(){
-  // productRank.tallyVotes();
   productRank.pic3.tally += 1;
   productRank.totalClicks += 1;
-  console.log(productRank.pic3.item + ' has ' + productRank.pic3.tally); //leftObj refers to object in our tally array
-  productRank.showResults();//calling function above
+  console.log(productRank.pic3.item + ' has ' + productRank.pic3.tally);
+  productRank.showResults();
   productRank.selection();
 
-}); //leftEl is property that holds value
-
+});
 
 function table(){
   produce.hidden = false;
@@ -153,5 +125,4 @@ function table(){
 productRank.results.addEventListener('click', function(event){
   event.preventDefault();
   table();
-
-}); //leftEl is property that holds value
+});
