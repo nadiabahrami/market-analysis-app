@@ -1,6 +1,23 @@
 // var images = ["bag.jpg", "banana.jpg","boots.jpg","chair.jpg","cthulhu.jpg","dragon.jpg","pen.jpg", "scissors.jpg", "shark.jpg", "sweep.jpg", "unicorn.jpg", "usb.jpg", "water_can.jpg","wine_glass.jpg"];
+var barData = {
+	labels : [],
+	datasets : [
+		{
+			fillColor : "#48A497",
+			strokeColor : "#48A4D1",
+			data : []
+		},
+		{
+			fillColor : "rgba(73,188,170,0.4)",
+			strokeColor : "rgba(72,174,209,0.4)",
+			data : []
+		}
+
+	]
+};
 var things =[];
 var produce = document.getElementById("resultTable");
+var produceChart = document.getElementById("filled");
 var products = ["bag", "banana", "boots","chair", "cthulhu", "dragon", "pen","scissors", "shark", "sweep", "unicorn", "usb", "water_can", "wine_glass"];
 
 function pic (spot){
@@ -8,6 +25,7 @@ function pic (spot){
   this.item = products[spot]
   this.tally = 0;
   this.views = 0;
+  barData.labels.push(this.item);
 };
 
 function create(){
@@ -25,6 +43,7 @@ var productRank = {
   pic1: null,
   pic2: null,
   pic3: null,
+  barChart: null,
 
   results: document.getElementById("press"),
   picA: document.getElementById("picA"),
@@ -44,7 +63,6 @@ var productRank = {
     {
     productRank.selection();
     console.log("redo");
-     things[pic3].views+= 1;
     }else{
       productRank.pic1.views += 1
       productRank.pic2.views += 1
@@ -60,21 +78,21 @@ var productRank = {
 
   showResults: function(){
     if (productRank.totalClicks % 15 === 0){
-      productRank.results.hidden = false;
+    productRank.results.hidden = false;
     }else{
-      productRank.results.hidden = true;
-      produce.hidden = true;
-
-
+    productRank.results.hidden = true;
+      // produce.hidden = true;
+      produceChart.hidden = true;
     }
-
   }
 };
+
 productRank.selection();
 console.log(productRank.pic1);
 
 productRank.picA.addEventListener('click', function(){
   productRank.pic1.tally += 1;
+  // barData.datasets[0].data.push(productRank.pic1.tally)
   productRank.totalClicks += 1;
   console.log(productRank.pic1.item + ' has ' + productRank.pic1.tally);
   productRank.showResults();
@@ -95,34 +113,19 @@ productRank.picC.addEventListener('click', function(){
   console.log(productRank.pic3.item + ' has ' + productRank.pic3.tally);
   productRank.showResults();
   productRank.selection();
-
 });
 
-function table(){
-  produce.hidden = false;
-  produce.innerHTML = "";
-  var makeTr = document.createElement("tr");
-  var makeTh = document.createElement("th");
-  makeTh.textContent= "Item";
-  makeTr.appendChild(makeTh);
-  var makeTh = document.createElement("th");
-  makeTh.textContent= "Votes";
-  makeTr.appendChild(makeTh);
-  produce.appendChild(makeTr);
-
+var income = document.getElementById("filled").getContext("2d");
+function createChart(){
+  produceChart.hidden = false;
   for(var i=0; i<things.length; i++){
-      var makeTr = document.createElement("tr");
-      var makeTd = document.createElement("td");
-      makeTd.textContent = things[i].item;
-      makeTr.appendChild(makeTd)
-      var makeTd = document.createElement("td");
-      makeTd.textContent = things[i].tally;
-      makeTr.appendChild(makeTd)
-      produce.appendChild(makeTr);
+    barData.datasets[0].data[i] =things[i].tally;
+    barData.datasets[1].data[i] = things[i].views;
   };
+  new Chart(income).Bar(barData);
 }
 
 productRank.results.addEventListener('click', function(event){
   event.preventDefault();
-  table();
+  createChart();
 });

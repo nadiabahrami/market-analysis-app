@@ -2,16 +2,27 @@
 @import url("skeleton.css");
 @import url(https://fonts.googleapis.com/css?family=Oswald);
 
+body{
+  background-color:#d4d4AE;
+}
 img {
   width: 20em;
   height:20em;
-  boder-color:black;
+  border-color:black;
   border-width:1px;
+}
+.four.columns{
+  margin-left:1em;
 }
 h1 {
   font-family: 'Oswald', sans-serif;
 }
 button{
   margin-bottom: 1em;
+  background-color:white;
+}
 
+#filled{
+  background-color:white;
+  margin-left: 1.5em;
 }
