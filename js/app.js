@@ -84,7 +84,6 @@ var productRank = {
       // produce.hidden = true;
       produceChart.hidden = true;
     }
-
   }
 };
 
@@ -114,35 +113,9 @@ productRank.picC.addEventListener('click', function(){
   console.log(productRank.pic3.item + ' has ' + productRank.pic3.tally);
   productRank.showResults();
   productRank.selection();
-
 });
 
-// function table(){
-//   produce.hidden = false;
-//   //produceChart.hidden = false;
-//   produce.innerHTML = "";
-//   var makeTr = document.createElement("tr");
-//   var makeTh = document.createElement("th");
-//   makeTh.textContent= "Item";
-//   makeTr.appendChild(makeTh);
-//   var makeTh = document.createElement("th");
-//   makeTh.textContent= "Votes";
-//   makeTr.appendChild(makeTh);
-//   produce.appendChild(makeTr);
-//
-//   for(var i=0; i<things.length; i++){
-//       var makeTr = document.createElement("tr");
-//       var makeTd = document.createElement("td");
-//       makeTd.textContent = things[i].item;
-//       makeTr.appendChild(makeTd)
-//       var makeTd = document.createElement("td");
-//       makeTd.textContent = things[i].tally;
-//     //  barData.datasets[0].data[i] =things[i].tally;
-//       makeTr.appendChild(makeTd);
-//       produce.appendChild(makeTr);
-//   };
-// }
-
+var income = document.getElementById("filled").getContext("2d");
 function createChart(){
   produceChart.hidden = false;
   for(var i=0; i<things.length; i++){
@@ -152,15 +125,7 @@ function createChart(){
   new Chart(income).Bar(barData);
 }
 
-var income = document.getElementById("filled").getContext("2d");
-
 productRank.results.addEventListener('click', function(event){
   event.preventDefault();
-//  table();
   createChart();
-  // new Chart(income).Bar(barData);
 });
-
-
-// var income = document.getElementById("filled").getContext("2d");
-// new Chart(income).Bar(barData);

@@ -19,5 +19,10 @@ h1 {
 }
 button{
   margin-bottom: 1em;
+  background-color:white;
+}
 
+#filled{
+  background-color:white;
+  margin-left: 1.5em;
 }
