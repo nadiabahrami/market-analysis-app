@@ -7,11 +7,11 @@ var barData = {
 			strokeColor : "#48A4D1",
 			data : []
 		},
-		// {
-		// 	fillColor : "rgba(73,188,170,0.4)",
-		// 	strokeColor : "rgba(72,174,209,0.4)",
-		// 	data : [364,504,605,400,345,320]
-		// }
+		{
+			fillColor : "rgba(73,188,170,0.4)",
+			strokeColor : "rgba(72,174,209,0.4)",
+			data : []
+		}
 
 	]
 };
@@ -78,10 +78,10 @@ var productRank = {
 
   showResults: function(){
     if (productRank.totalClicks % 15 === 0){
-      productRank.results.hidden = false;
+    productRank.results.hidden = false;
     }else{
-      productRank.results.hidden = true;
-      produce.hidden = true;
+    productRank.results.hidden = true;
+      // produce.hidden = true;
       produceChart.hidden = true;
     }
 
@@ -117,37 +117,47 @@ productRank.picC.addEventListener('click', function(){
 
 });
 
-function table(){
-  produce.hidden = false;
-  produceChart.hidden = false;
-  produce.innerHTML = "";
-  var makeTr = document.createElement("tr");
-  var makeTh = document.createElement("th");
-  makeTh.textContent= "Item";
-  makeTr.appendChild(makeTh);
-  var makeTh = document.createElement("th");
-  makeTh.textContent= "Votes";
-  makeTr.appendChild(makeTh);
-  produce.appendChild(makeTr);
+// function table(){
+//   produce.hidden = false;
+//   //produceChart.hidden = false;
+//   produce.innerHTML = "";
+//   var makeTr = document.createElement("tr");
+//   var makeTh = document.createElement("th");
+//   makeTh.textContent= "Item";
+//   makeTr.appendChild(makeTh);
+//   var makeTh = document.createElement("th");
+//   makeTh.textContent= "Votes";
+//   makeTr.appendChild(makeTh);
+//   produce.appendChild(makeTr);
+//
+//   for(var i=0; i<things.length; i++){
+//       var makeTr = document.createElement("tr");
+//       var makeTd = document.createElement("td");
+//       makeTd.textContent = things[i].item;
+//       makeTr.appendChild(makeTd)
+//       var makeTd = document.createElement("td");
+//       makeTd.textContent = things[i].tally;
+//     //  barData.datasets[0].data[i] =things[i].tally;
+//       makeTr.appendChild(makeTd);
+//       produce.appendChild(makeTr);
+//   };
+// }
 
+function createChart(){
+  produceChart.hidden = false;
   for(var i=0; i<things.length; i++){
-      var makeTr = document.createElement("tr");
-      var makeTd = document.createElement("td");
-      makeTd.textContent = things[i].item;
-      makeTr.appendChild(makeTd)
-      var makeTd = document.createElement("td");
-      makeTd.textContent = things[i].tally;
-      barData.datasets[0].data[i] =things[i].tally;
-      makeTr.appendChild(makeTd);
-      produce.appendChild(makeTr);
+    barData.datasets[0].data[i] =things[i].tally;
+    barData.datasets[1].data[i] = things[i].views;
   };
   new Chart(income).Bar(barData);
 }
 
 var income = document.getElementById("filled").getContext("2d");
+
 productRank.results.addEventListener('click', function(event){
   event.preventDefault();
-  table();
+//  table();
+  createChart();
   // new Chart(income).Bar(barData);
 });
 

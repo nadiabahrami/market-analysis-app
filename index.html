@@ -9,16 +9,18 @@
   <body>
     <h1>BusMall - Shopping on the Go!</h1>
     <p>Please click on an object to vote</p>
-    <section id="images">
-      <img src="" alt="" id="picA">
-      <img src="" alt="" id="picB">
-      <img src="" alt="" id="picC">
+    <section id="images" class = "container">
+      <section class = "row">
+      <img src="" alt="" id="picA" class = "four columns">
+      <img src="" alt="" id="picB" class = "four columns">
+      <img src="" alt="" id="picC" class = "four columns">
+    </section>
     </section>
     <p>Voting statistics will be available at intervals of 15 votes</p>
     <button type="click" id="press" hidden>Statistics</button>
     <table id = "resultTable" hidden></table>
     <section id="chart">
-      <canvas id="filled" width="600" height"400" hidden></caanvas>
+      <canvas id="filled" width="800" height"600" hidden></caanvas>
     <script src="js/app.js"></script>
 
   </body>
