@@ -1,6 +1,23 @@
 // var images = ["bag.jpg", "banana.jpg","boots.jpg","chair.jpg","cthulhu.jpg","dragon.jpg","pen.jpg", "scissors.jpg", "shark.jpg", "sweep.jpg", "unicorn.jpg", "usb.jpg", "water_can.jpg","wine_glass.jpg"];
+var barData = {
+	labels : [],
+	datasets : [
+		{
+			fillColor : "#48A497",
+			strokeColor : "#48A4D1",
+			data : []
+		},
+		// {
+		// 	fillColor : "rgba(73,188,170,0.4)",
+		// 	strokeColor : "rgba(72,174,209,0.4)",
+		// 	data : [364,504,605,400,345,320]
+		// }
+
+	]
+};
 var things =[];
 var produce = document.getElementById("resultTable");
+var produceChart = document.getElementById("filled");
 var products = ["bag", "banana", "boots","chair", "cthulhu", "dragon", "pen","scissors", "shark", "sweep", "unicorn", "usb", "water_can", "wine_glass"];
 
 function pic (spot){
@@ -8,6 +25,7 @@ function pic (spot){
   this.item = products[spot]
   this.tally = 0;
   this.views = 0;
+  barData.labels.push(this.item);
 };
 
 function create(){
@@ -25,6 +43,7 @@ var productRank = {
   pic1: null,
   pic2: null,
   pic3: null,
+  barChart: null,
 
   results: document.getElementById("press"),
   picA: document.getElementById("picA"),
@@ -44,7 +63,6 @@ var productRank = {
     {
     productRank.selection();
     console.log("redo");
-     things[pic3].views+= 1;
     }else{
       productRank.pic1.views += 1
       productRank.pic2.views += 1
@@ -64,17 +82,18 @@ var productRank = {
     }else{
       productRank.results.hidden = true;
       produce.hidden = true;
-
-
+      produceChart.hidden = true;
     }
 
   }
 };
+
 productRank.selection();
 console.log(productRank.pic1);
 
 productRank.picA.addEventListener('click', function(){
   productRank.pic1.tally += 1;
+  // barData.datasets[0].data.push(productRank.pic1.tally)
   productRank.totalClicks += 1;
   console.log(productRank.pic1.item + ' has ' + productRank.pic1.tally);
   productRank.showResults();
@@ -100,6 +119,7 @@ productRank.picC.addEventListener('click', function(){
 
 function table(){
   produce.hidden = false;
+  produceChart.hidden = false;
   produce.innerHTML = "";
   var makeTr = document.createElement("tr");
   var makeTh = document.createElement("th");
@@ -117,12 +137,20 @@ function table(){
       makeTr.appendChild(makeTd)
       var makeTd = document.createElement("td");
       makeTd.textContent = things[i].tally;
-      makeTr.appendChild(makeTd)
+      barData.datasets[0].data[i] =things[i].tally;
+      makeTr.appendChild(makeTd);
       produce.appendChild(makeTr);
   };
+  new Chart(income).Bar(barData);
 }
 
+var income = document.getElementById("filled").getContext("2d");
 productRank.results.addEventListener('click', function(event){
   event.preventDefault();
   table();
+  // new Chart(income).Bar(barData);
 });
+
+
+// var income = document.getElementById("filled").getContext("2d");
+// new Chart(income).Bar(barData);
