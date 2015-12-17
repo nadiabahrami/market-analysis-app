@@ -1,4 +1,4 @@
-// var images = ["bag.jpg", "banana.jpg","boots.jpg","chair.jpg","cthulhu.jpg","dragon.jpg","pen.jpg", "scissors.jpg", "shark.jpg", "sweep.jpg", "unicorn.jpg", "usb.jpg", "water_can.jpg","wine_glass.jpg"];
+var products = ["bag.jpg", "banana.jpg","boots.jpg","chair.jpg","cthulhu.jpg","dragon.jpg","pen.jpg", "scissors.jpg", "shark.jpg", "sweep.jpg", "unicorn.jpg", "usb.gif", "water_can.jpg","wine_glass.jpg"];
 var barData = {
 	labels : [],
 	datasets : [
@@ -17,11 +17,10 @@ var barData = {
 var things =[];
 var produce = document.getElementById("resultTable");
 var produceChart = document.getElementById("filled");
-var products = ["bag", "banana", "boots","chair", "cthulhu", "dragon", "pen","scissors", "shark", "sweep", "unicorn", "usb", "water_can", "wine_glass"];
 
 function pic (spot){
-  this.path = "img/"+ products[spot] +".jpg";
-  this.item = products[spot]
+  this.path = "img/"+ products[spot];
+  this.item = products[spot].slice(0,-4);
   this.tally = 0;
   this.views = 0;
   barData.labels.push(this.item);
