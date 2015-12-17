@@ -120,10 +120,10 @@ function createChart(){
   };
     if(localStorage.tallies){
       var bringTallies = JSON.parse(localStorage.tallies);
-      var bringVotes = JSON.parse(localStorage.Views);
+      var bringViews = JSON.parse(localStorage.Views);
       for(var i=0; i<things.length; i++){
-        barData.datasets[0].data[i] += bringVotes[i];
-        barData.datasets[1].data[i] += bringTallies[i];
+        barData.datasets[1].data[i] += bringViews[i];
+        barData.datasets[0].data[i] += bringTallies[i];
       };
       localStorage.setItem("tallies",  JSON.stringify(barData.datasets[0].data));
       localStorage.setItem("Views", JSON.stringify(barData.datasets[1].data));
