@@ -12,7 +12,6 @@ var barData = {
 			strokeColor : "rgba(72,174,209,0.4)",
 			data : []
 		}
-
 	]
 };
 var things =[];
@@ -81,7 +80,6 @@ var productRank = {
     productRank.results.hidden = false;
     }else{
     productRank.results.hidden = true;
-      // produce.hidden = true;
       produceChart.hidden = true;
     }
   }
@@ -92,7 +90,6 @@ console.log(productRank.pic1);
 
 productRank.picA.addEventListener('click', function(){
   productRank.pic1.tally += 1;
-  // barData.datasets[0].data.push(productRank.pic1.tally)
   productRank.totalClicks += 1;
   console.log(productRank.pic1.item + ' has ' + productRank.pic1.tally);
   productRank.showResults();
@@ -122,6 +119,19 @@ function createChart(){
     barData.datasets[0].data[i] =things[i].tally;
     barData.datasets[1].data[i] = things[i].views;
   };
+    if(localStorage.tallies){
+      var bringTallies = JSON.parse(localStorage.tallies);
+      var bringVotes = JSON.parse(localStorage.Views);
+      for(var i=0; i<things.length; i++){
+        barData.datasets[0].data[i] += bringVotes[i];
+        barData.datasets[1].data[i] += bringTallies[i];
+      };
+      localStorage.setItem("tallies",  JSON.stringify(barData.datasets[0].data));
+      localStorage.setItem("Views", JSON.stringify(barData.datasets[1].data));
+    }else{
+      localStorage.setItem("tallies", JSON.stringify(barData.datasets[0].data));
+      localStorage.setItem("Views", JSON.stringify(barData.datasets[1].data));
+  }
   new Chart(income).Bar(barData);
 }
 
