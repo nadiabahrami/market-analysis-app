@@ -130,7 +130,7 @@ function createChart(){
     localStorage.setItem('Views', JSON.stringify(barData.datasets[1].data));
   }else{
     localStorage.setItem('tallies', JSON.stringify(barData.datasets[0].data));
-    localStorage.setItem('Views', JSON.stringify(barData.datasets[1].data)
+    localStorage.setItem('Views', JSON.stringify(barData.datasets[1].data));
 
     newChart(income).Bar(barData);
 }
