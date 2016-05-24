@@ -112,12 +112,13 @@ productRank.picC.addEventListener('click', function(){
 });
 
 var income = document.getElementById('filled').getContext('2d');
+
 function createChart(){
   produceChart.hidden = false;
   for(var i=0; i<things.length; i++){
     barData.datasets[0].data[i] =things[i].tally;
     barData.datasets[1].data[i] = things[i].views;
-  }
+  };
   if(localStorage.tallies){
     var bringTallies = JSON.parse(localStorage.tallies);
     var bringViews = JSON.parse(localStorage.Views);
@@ -125,8 +126,7 @@ function createChart(){
       barData.datasets[1].data[i] += bringViews[i];
       barData.datasets[0].data[i] += bringTallies[i];
     }
-    localStorage.setItem('tallies',
-    JSON.stringify(barData.datasets[0].data));
+    localStorage.setItem('tallies', JSON.stringify(barData.datasets[0].data));
     localStorage.setItem('Views', JSON.stringify(barData.datasets[1].data));
   }else{
     localStorage.setItem('tallies', JSON.stringify(barData.datasets[0].data));
