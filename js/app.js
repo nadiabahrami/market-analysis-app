@@ -133,7 +133,8 @@ function createChart(){
     localStorage.setItem('Views', JSON.stringify(barData.datasets[1].data));
 
     newChart(income).Bar(barData);
-}
+  }
+};
 
 productRank.results.addEventListener('click', function(event){
   event.preventDefault();
