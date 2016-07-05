@@ -3,17 +3,22 @@ var barData = {
   labels:	[],
   datasets : [
     {
-      fillColor : '#48A497',
-      strokeColor : '#48A4D1',
+      // fillColor : '#48A497',
+      // strokeColor : '#48A4D1',
+      backgroundColor: '#48A497',
       data : []
     },
     {
-      fillColor : 'rgba(73,188,170,0.4)',
-      strokeColor : 'rgba(72,174,209,0.4)',
+      // fillColor : 'rgba(73,188,170,0.4)',
+      // strokeColor : 'rgba(72,174,209,0.4)',
+      backgroundColor: '#48A497',
       data : []
     }
   ]
 };
+
+
+
 var things =[];
 var produce = document.getElementById('resultTable');
 var produceChart = document.getElementById('filled');
@@ -132,13 +137,16 @@ function createChart(){
     localStorage.setItem('tallies', JSON.stringify(barData.datasets[0].data));
     localStorage.setItem('Views', JSON.stringify(barData.datasets[1].data));
 
-    newChart(income).Bar(barData);
+    new Chart.Bar(income, {
+    data: barData
+  });
   }
 };
 
 productRank.results.addEventListener('click', function(event){
   event.preventDefault();
   createChart();
+  console.log('chart is created');
 });
 // new Chart.Bar(chart, {
 //     data: chartData,
