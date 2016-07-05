@@ -3,21 +3,25 @@ var barData = {
   labels:	[],
   datasets : [
     {
-      // fillColor : '#48A497',
-      // strokeColor : '#48A4D1',
+      label: 'Product Clicks',
+      borderColor: '#48A4D1',
       backgroundColor: '#48A497',
+      borderWidth: 1,
+      hoverBackgroundColor: 'rgba(111,178,18,0.9)',
+      hoverBorderColor: 'rgba(111,178,18,0.9)',
       data : []
     },
     {
-      // fillColor : 'rgba(73,188,170,0.4)',
-      // strokeColor : 'rgba(72,174,209,0.4)',
-      backgroundColor: '#48A497',
+      label: 'Product Views',
+      borderColor: '#48A4D1',
+      backgroundColor: '#27389E',
+      borderWidth: 1,
+      hoverBackgroundColor: 'rgba(111,178,18,0.9)',
+      hoverBorderColor: 'rgba(111,178,18,0.9)',
       data : []
     }
   ]
 };
-
-
 
 var things =[];
 var produce = document.getElementById('resultTable');
@@ -148,37 +152,3 @@ productRank.results.addEventListener('click', function(event){
   createChart();
   console.log('chart is created');
 });
-
-var trial = document.getElementById('trial').getContext('2d');
-
-var chartData = {
-  labels: ['1', '2', '3'],
-  datasets : [
-    {
-      // fillColor : '#48A497',
-      // strokeColor : '#48A4D1',
-      backgroundColor: '#48A497',
-      data : [3,8,6]
-    },
-    {
-      // fillColor : 'rgba(73,188,170,0.4)',
-      // strokeColor : 'rgba(72,174,209,0.4)',
-      backgroundColor: '#48A497',
-      data : [2,5,1]
-    }
-  ]
-};
-new Chart.Bar(trial, {
-    data: chartData
-    // options: {
-    //   responsive: true,
-    //   scales: {
-    //     yAxes: [{
-    //       ticks: {
-    //         min: 0,
-    //         stepSize: 10
-    //       }
-    //     }]
-    //   }
-    // }
-  });
