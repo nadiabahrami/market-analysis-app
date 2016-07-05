@@ -140,3 +140,18 @@ productRank.results.addEventListener('click', function(event){
   event.preventDefault();
   createChart();
 });
+// new Chart.Bar(chart, {
+//     data: chartData,
+//     options: {
+//       responsive: true,
+//       scales: {
+//         yAxes: [{
+//           ticks: {
+//             min: 0,
+//             stepSize: 10
+//           }
+//         }]
+//       }
+//     }
+//   });
+// }
