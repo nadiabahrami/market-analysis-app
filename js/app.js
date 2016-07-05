@@ -136,11 +136,11 @@ function createChart(){
   }else{
     localStorage.setItem('tallies', JSON.stringify(barData.datasets[0].data));
     localStorage.setItem('Views', JSON.stringify(barData.datasets[1].data));
-
-    new Chart.Bar(income, {
+    console.log(barData);
+  }
+  new Chart.Bar(income, {
     data: barData
   });
-  }
 };
 
 productRank.results.addEventListener('click', function(event){
@@ -148,18 +148,37 @@ productRank.results.addEventListener('click', function(event){
   createChart();
   console.log('chart is created');
 });
-// new Chart.Bar(chart, {
-//     data: chartData,
-//     options: {
-//       responsive: true,
-//       scales: {
-//         yAxes: [{
-//           ticks: {
-//             min: 0,
-//             stepSize: 10
-//           }
-//         }]
-//       }
-//     }
-//   });
-// }
+
+var trial = document.getElementById('trial').getContext('2d');
+
+var chartData = {
+  labels: ['1', '2', '3'],
+  datasets : [
+    {
+      // fillColor : '#48A497',
+      // strokeColor : '#48A4D1',
+      backgroundColor: '#48A497',
+      data : [3,8,6]
+    },
+    {
+      // fillColor : 'rgba(73,188,170,0.4)',
+      // strokeColor : 'rgba(72,174,209,0.4)',
+      backgroundColor: '#48A497',
+      data : [2,5,1]
+    }
+  ]
+};
+new Chart.Bar(trial, {
+    data: chartData
+    // options: {
+    //   responsive: true,
+    //   scales: {
+    //     yAxes: [{
+    //       ticks: {
+    //         min: 0,
+    //         stepSize: 10
+    //       }
+    //     }]
+    //   }
+    // }
+  });
