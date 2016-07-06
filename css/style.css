@@ -5,24 +5,65 @@
 body{
   background-color:#d4d4AE;
 }
-img {
-  width: 20em;
-  height:20em;
+
+p {
+  text-align: center;
+  font-size: 1.5em;
+  margin: 0 2em;
+}
+
+/*img {
+  width: 18em;
+  height:18em;
   border-color:black;
   border-width:1px;
+}*/
+
+#images { 
+  display: inline-block;
+  position: relative;
+  width: 80%;
+  margin: 0 10%;
+  height: 300px;
 }
+
+.row {
+  margin-top: 7.5%;
+}
+
+#picA {
+  position: absolute;
+  top: 50;
+}
+
+#picB {
+  position: absolute;
+  top: 0;
+}
+
+#picC {
+  position: absolute;
+  top: 80;
+}
+
 .four.columns{
   margin-left:1em;
 }
+
 h1 {
   font-family: 'Oswald', sans-serif;
+  margin-left: 5rem;
+  margin-top: 3rem;
 }
+
 button{
-  margin-bottom: 1em;
-  background-color:white;
+  margin: 20 auto;
+  background-color: white;
+
+
 }
 
 #filled{
-  background-color:white;
+  background-color: white;
   margin-left: 1.5em;
 }
